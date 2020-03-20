@@ -29,7 +29,26 @@ jobs:
           name: Install zip
           command:
             sudo apt-get install -y zip
-          
+      - run:
+          name: Run Coverage
+          command:
+            coverage run --omit */dist-packages/*  ./test_car_manager.py
+      - run:
+          name: Coverage the report
+          command:
+            coverage report     
+      - run:
+          name: Lint the py files
+          command:
+            pylint-fail-under --fail_under 5.0 ./*.py 
+      - run:
+          name: Zip the project
+          command:
+            zip ./app.zip ./*.py
+      - store_artifacts:
+          path: ./app.zip
+          destination: ./
+
 
 workflows:
   main:
