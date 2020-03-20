@@ -12,8 +12,10 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          command: ./test_car_manager.py test
           name: Test
+          command: 
+            python3 ./test_car_manager.py
+          
 
 workflows:
   main:
