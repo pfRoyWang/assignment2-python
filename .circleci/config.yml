@@ -47,7 +47,6 @@ jobs:
             zip ./app.zip ./*.py
       - store_artifacts:
           path: ./app.zip
-          destination: ./
 
 
 workflows:
